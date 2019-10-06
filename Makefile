@@ -1,5 +1,5 @@
 NAME = istio-in-action
-VERSION = 1.3.0-rc.3
+VERSION = 1.3.0
 
 .PHONY: info
 
@@ -13,7 +13,7 @@ prepare:
 cluster:
 	@gcloud container clusters create $(NAME) --num-nodes=7 --enable-autoscaling --min-nodes=5 --max-nodes=10 --machine-type=n1-standard-2
 	@kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=$$(gcloud config get-value core/account)
-	@kubectl kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+	@kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 	@kubectl cluster-info
 
 access-token:
@@ -42,7 +42,7 @@ helm-init:
 	@kubectl get deploy,svc tiller-deploy -n kube-system
 
 get-istio:
-	@curl -L https://git.io/getLatestIstio | sh -
+	@curl -L https://git.io/getLatestIstio | ISTIO_VERSION=$(VERSION) sh -
 	@echo "Make sure to export the PATH variable."
 
 istio-manual:
@@ -73,7 +73,7 @@ istio-helm:
 	@kubectl get pods -n istio-system
 
 istio-delete:
-	@kubectl delete -f install/kubernetes/istio-demo.yaml
+	@kubectl delete -f istio-$(VERSION)install/kubernetes/istio-demo.yaml
 	@kubectl delete -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-10.yaml
 	@kubectl delete -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-11.yaml
 	@kubectl delete -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-12.yaml
