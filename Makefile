@@ -1,5 +1,5 @@
 NAME = istio-in-action
-VERSION = 1.3.0
+VERSION = 1.3.3
 
 .PHONY: info
 
