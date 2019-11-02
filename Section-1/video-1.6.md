@@ -3,7 +3,7 @@
 In this video are going to deploy our first application to the Istio service mesh.
 
 ```
-$ kubectl create namesapce istio-demo
+$ kubectl create namespace istio-demo
 $ kubectl label namespace istio-demo istio-injection=enabled
 $ kubectl label namespace default istio-injection=enabled
 
