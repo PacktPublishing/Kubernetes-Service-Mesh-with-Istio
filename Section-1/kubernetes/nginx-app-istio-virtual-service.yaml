@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx-app-virtual-service
+spec:
+  hosts:
+  - "nginx-app.demo"
+  gateways:
+  - nginx-app-istio-gateway
+  http:
+  - route:
+    - destination:
+        host: nginx-app
+        port:
+          number: 80
