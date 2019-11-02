@@ -12,11 +12,11 @@ under https://istio.io/docs/setup/platform-setup/docker/
 ## Step 1: Setup and Verify
 
 First, you need to download and setup the latest Istio release.
-At the time of writing this is `1.3.0`.
+At the time of writing this is `1.3.4`.
 ```
-$ curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.3.0 sh -
+$ curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.3.4 sh -
 
-$ cd istio-1.3.0
+$ cd istio-1.3.4
 $ export PATH=$PWD/bin:$PATH
 
 $ istioctl verify-install
@@ -29,11 +29,7 @@ services for the Istio demo.
 
 ```
 # install and bootstrap all the Istio CRDs
-$ kubectl apply -f install/kubernetes/helm/istio-init/files/crd-10.yaml
-$ kubectl apply -f install/kubernetes/helm/istio-init/files/crd-11.yaml
-$ kubectl apply -f install/kubernetes/helm/istio-init/files/crd-12.yaml
-$ kubectl apply -f install/kubernetes/helm/istio-init/files/crd-certmanager-10.yaml
-$ kubectl apply -f install/kubernetes/helm/istio-init/files/crd-certmanager-11.yaml
+$ for i in install/kubernetes/helm/istio-init/files/crd*yaml; do kubectl apply -f $i; done
 $ kubectl get crds | grep 'istio.io' | wc -l
 
 # install the istio demo profile
@@ -48,11 +44,7 @@ $ kubectl get svc -n istio-system
 
 In case you want to uninstall Istio, issue the following commands:
 ```
-@kubectl delete -f istio-$(VERSION)install/kubernetes/istio-demo.yaml
-@kubectl delete -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-10.yaml
-@kubectl delete -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-11.yaml
-@kubectl delete -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-12.yaml
-@kubectl delete -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-certmanager-10.yaml
-@kubectl delete -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-certmanager-11.yaml
-@kubectl label namespace default istio-injection-
+$ kubectl label namespace default istio-injection-
+$ kubectl delete -f istio-$(VERSION)install/kubernetes/istio-demo.yaml
+$ for i in install/kubernetes/helm/istio-init/files/crd*yaml; do kubectl delete -f $i; done
 ```
