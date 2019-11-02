@@ -11,11 +11,11 @@ under https://istio.io/docs/setup/platform-setup/docker/
 ## Step 1: Setup and Verify
 
 First, you need to download and setup the latest Istio release.
-At the time of writing this is `1.3.0`.
+At the time of writing this is `1.3.4`.
 ```
-$ curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.3.0 sh -
+$ curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.3.4 sh -
 
-$ cd istio-1.3.0
+$ cd istio-1.3.4
 $ export PATH=$PWD/bin:$PATH
 
 $ istioctl verify-install
@@ -45,7 +45,7 @@ kubectl get deploy,svc tiller-deploy -n kube-system
 
 ```
 # deploy Istio via Helm
-$ helm repo add istio.io https://storage.googleapis.com/istio-release/releases/1.3.0/charts/
+$ helm repo add istio.io https://storage.googleapis.com/istio-release/releases/1.3.4/charts/
 
 # Install the istio-init chart to bootstrap all the Istio CRDs
 $ helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
@@ -65,5 +65,5 @@ In case you want to uninstall Istio using Helm, issue the following commands:
 ```
 $ helm delete --purge istio
 $ helm delete --purge istio-init
-$ kubectl delete namespace istio-system
+$ kubectl label namespace default istio-injection-
 ```

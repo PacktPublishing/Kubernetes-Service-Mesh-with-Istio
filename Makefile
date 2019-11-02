@@ -11,7 +11,7 @@ prepare:
 	@gcloud config set container/use_client_certificate False
 
 cluster:
-	@gcloud container clusters create $(NAME) --num-nodes=7 --enable-autoscaling --min-nodes=5 --max-nodes=10 --machine-type=n1-standard-2 --enable-network-policy
+	@gcloud container clusters create $(NAME) --num-nodes=7 --enable-autoscaling --min-nodes=5 --max-nodes=10 --machine-type=n1-standard-2 --enable-network-policy --no-enable-autoupgrade
 	@kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=$$(gcloud config get-value core/account)
 	@kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 	@kubectl cluster-info
