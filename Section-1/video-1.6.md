@@ -16,4 +16,5 @@ $ kubectl apply -f kubernetes/nginx-app-istio-virtual-service.yaml -n istio-demo
 
 $ kubectl get svc istio-ingressgateway -n istio-system
 $ curl -H "Host: nginx-app.demo" <EXTERNAL-IP>
+
 ```

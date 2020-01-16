@@ -60,7 +60,7 @@ istio-manual:
 
 istio-helm:
 	# deploy Istio via Helm
-	@helm repo add istio.io https://storage.googleapis.com/istio-release/releases/1.3.0/charts/
+	@helm repo add istio.io https://storage.googleapis.com/istio-release/releases/$(VERSION)/charts/
 
 	@helm install istio-$(VERSION)/install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
 	@kubectl get crds | grep 'istio.io' | wc -l
