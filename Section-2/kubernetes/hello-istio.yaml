@@ -21,7 +21,7 @@ spec:
     matchLabels:
       app: hello-istio
       version: v1
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -63,7 +63,7 @@ spec:
     matchLabels:
       app: hello-istio
       version: v2
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
