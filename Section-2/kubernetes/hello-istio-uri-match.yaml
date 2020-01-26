@@ -26,7 +26,7 @@ spec:
           subset: v2
   - match:
     - uri:
-        prefix: "/api/v1"
+        prefix: "/api/v1/"
     rewrite:
       uri: "/api/"
     route:

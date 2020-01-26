@@ -46,16 +46,24 @@ $ kubectl apply -f kubernetes/hello-istio-destination.yaml
 # apply path based routing
 $ kubectl apply -f kubernetes/hello-istio-uri-match.yaml
 
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
+$ http get $INGRESS_HOST/api/v1/hello Host:hello-istio.cloud
+$ http get $INGRESS_HOST/api/v2/hello Host:hello-istio.cloud
+
 # apply header based routing
 $ kubectl apply -f hello-istio-user-agent.yaml
-$ http get $INGRESS_HOST/api/hello User-Agent:Chrome
+$ http get $INGRESS_HOST/api/hello User-Agent:Chrome Host:hello-istio.cloud
+
 $ kubectl apply -f hello-istio-user-cookie.yaml
-$ http get $INGRESS_HOST/api/hello Cookie:user=packtpub
+$ http get $INGRESS_HOST/api/hello Cookie:user=packtpub Host:hello-istio.cloud
 
 # apply weight based routing
 $ kubectl apply -f kubernetes/hello-istio-75-25.yaml
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 $ kubectl apply -f kubernetes/hello-istio-50-50.yaml
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 $ kubectl apply -f kubernetes/hello-istio-25-75.yaml
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 
 # perform blue green release deployment
 $ kubectl apply -f kubernetes/hello-istio-v1.yaml

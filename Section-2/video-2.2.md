@@ -11,28 +11,32 @@ $ kubectl label namespace default istio-injection=enabled
 
 $ kubectl get svc istio-ingressgateway -n istio-system
 $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-```
 
-## Running
-
-```
 # deploy sample application
 $ kubectl apply -f kubernetes/hello-istio.yaml
 
 # create ingress gateway and route traffic to microservices
 $ kubectl apply -f kubernetes/hello-istio-gateway.yaml
 $ kubectl apply -f kubernetes/hello-istio-virtual-service.yaml
+```
 
+## Running
+
+```
 # apply the version subsets as destinations
 $ kubectl apply -f kubernetes/hello-istio-destination.yaml
 
 # apply path based routing
 $ kubectl apply -f kubernetes/hello-istio-uri-match.yaml
 
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
+$ http get $INGRESS_HOST/api/v1/hello Host:hello-istio.cloud
+$ http get $INGRESS_HOST/api/v2/hello Host:hello-istio.cloud
+
 # apply header based routing
 $ kubectl apply -f hello-istio-user-agent.yaml
-$ http get $INGRESS_HOST/api/hello User-Agent:Chrome
+$ http get $INGRESS_HOST/api/hello User-Agent:Chrome Host:hello-istio.cloud
 
 $ kubectl apply -f hello-istio-user-cookie.yaml
-$ http get $INGRESS_HOST/api/hello Cookie:user=packtpub
+$ http get $INGRESS_HOST/api/hello Cookie:user=packtpub Host:hello-istio.cloud
 ```
