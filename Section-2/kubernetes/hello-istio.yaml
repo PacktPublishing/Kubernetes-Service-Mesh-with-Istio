@@ -111,9 +111,10 @@ spec:
         app: hello-istio-console
     spec:
       containers:
-      - image: busybox
+      - image: console
         command:
-          - /bin/sh
+          - sleep
+          - "3600"
         imagePullPolicy: IfNotPresent
         name: busybox
       restartPolicy: Always
