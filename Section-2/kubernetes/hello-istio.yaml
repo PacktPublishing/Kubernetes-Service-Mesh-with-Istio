@@ -21,7 +21,7 @@ spec:
     matchLabels:
       app: hello-istio
       version: v1
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -63,7 +63,7 @@ spec:
     matchLabels:
       app: hello-istio
       version: v2
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -111,10 +111,10 @@ spec:
         app: hello-istio-console
     spec:
       containers:
-      - image: console
+      - image: busybox
         command:
           - sleep
           - "3600"
         imagePullPolicy: IfNotPresent
-        name: busybox
+        name: console
       restartPolicy: Always
