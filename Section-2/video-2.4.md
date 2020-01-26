@@ -34,9 +34,9 @@ $ kubectl apply -f kubernetes/hello-istio-v2.yaml
 $ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 
 # perform canary release deployment
-$ kubectl apply -f kubernetes/hello-istio-v1.yaml
+$ kubectl apply -f kubernetes/hello-istio-100-0.yaml
 $ kubectl apply -f kubernetes/hello-istio-75-25.yaml
 $ kubectl apply -f kubernetes/hello-istio-50-50.yaml
 $ kubectl apply -f kubernetes/hello-istio-25-75.yaml
-$ kubectl apply -f kubernetes/hello-istio-v2.yaml
+$ kubectl apply -f kubernetes/hello-istio-0-100.yaml
 ```
