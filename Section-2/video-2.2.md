@@ -34,9 +34,9 @@ $ http get $INGRESS_HOST/api/v1/hello Host:hello-istio.cloud
 $ http get $INGRESS_HOST/api/v2/hello Host:hello-istio.cloud
 
 # apply header based routing
-$ kubectl apply -f hello-istio-user-agent.yaml
+$ kubectl apply -f kubernetes/hello-istio-user-agent.yaml
 $ http get $INGRESS_HOST/api/hello User-Agent:Chrome Host:hello-istio.cloud
 
-$ kubectl apply -f hello-istio-user-cookie.yaml
+$ kubectl apply -f kubernetes/hello-istio-user-cookie.yaml
 $ http get $INGRESS_HOST/api/hello Cookie:user=packtpub Host:hello-istio.cloud
 ```
