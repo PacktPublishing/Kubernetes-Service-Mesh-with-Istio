@@ -14,6 +14,8 @@ $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway
 
 # deploy sample application
 $ kubectl apply -f kubernetes/hello-istio.yaml
+
+$ export SOURCE_POD=$(kubectl get pod -l app=hello-istio-console -o jsonpath={.items..metadata.name})
 ```
 
 ## Running
