@@ -81,6 +81,8 @@ istio-delete:
 	@kubectl delete -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-certmanager-11.yaml
 	@kubectl label namespace default istio-injection-
 
+destroy:
+	@gcloud container clusters delete $(NAME) --async --quiet
+	
 clean:
 	@rm -rf istio-$(VERSION)
-	@gcloud container clusters delete $(NAME) --async --quiet
