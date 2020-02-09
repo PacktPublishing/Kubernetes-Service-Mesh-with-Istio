@@ -41,7 +41,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, getMessage("index"))
+	fmt.Fprintf(w, "Hello Istio Golang v1")
 }
 
 type hello struct {
