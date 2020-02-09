@@ -1,5 +1,5 @@
 NAME = istio-in-action
-VERSION = 1.3.4
+VERSION = 1.3.7
 
 .PHONY: info
 
@@ -83,6 +83,6 @@ istio-delete:
 
 destroy:
 	@gcloud container clusters delete $(NAME) --async --quiet
-	
+
 clean:
 	@rm -rf istio-$(VERSION)
