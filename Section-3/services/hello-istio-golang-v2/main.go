@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"strconv"
@@ -40,7 +41,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "Kubernetes Service Meshes with Istio by Packt Publising")
+	fmt.Fprintf(w, getMessage("index"))
 }
 
 type hello struct {
@@ -58,7 +59,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	m := hello{"Hello Istio from Golang.", "v2"}
+	m := hello{getMessage("hello"), "v2"}
 	b, err := json.Marshal(m)
 
 	if err != nil {
@@ -67,4 +68,20 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Add("Content-Type", "application/json; charset=utf-8")
 	w.Write(b)
+}
+
+func getMessage(msg string) string {
+	resp, err := http.Get("http://hello-message:8080/api/message/" + msg)
+	if err != nil {
+		return "Error getting message from backend."
+	}
+
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return "Error reading message from backend."
+	}
+
+	return string(body)
 }

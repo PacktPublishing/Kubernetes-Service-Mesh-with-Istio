@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strconv"
+	"time"
 )
 
 func main() {
@@ -28,15 +30,39 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	sleeps, ok := r.URL.Query()["sleep"]
+	if ok {
+		i, err := strconv.Atoi(sleeps[0])
+		if err == nil {
+			time.Sleep(time.Duration(i) * time.Second)
+		}
+	}
+
 	w.WriteHeader(http.StatusNoContent)
 }
 
 func indexMsgHandler(w http.ResponseWriter, r *http.Request) {
+	sleeps, ok := r.URL.Query()["sleep"]
+	if ok {
+		i, err := strconv.Atoi(sleeps[0])
+		if err == nil {
+			time.Sleep(time.Duration(i) * time.Second)
+		}
+	}
+
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "Kubernetes Service Meshes with Istio by Packt Publising")
 }
 
 func helloMsgHandler(w http.ResponseWriter, r *http.Request) {
+	sleeps, ok := r.URL.Query()["sleep"]
+	if ok {
+		i, err := strconv.Atoi(sleeps[0])
+		if err == nil {
+			time.Sleep(time.Duration(i) * time.Second)
+		}
+	}
+
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "Hello Istio from Golang.")
 }

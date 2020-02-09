@@ -1,4 +1,4 @@
-NAME = hello-message-golang:1.0.1
+NAME = hello-message-golang:1.1.1
 
 default: run
 
