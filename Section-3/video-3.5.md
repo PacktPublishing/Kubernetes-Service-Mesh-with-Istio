@@ -47,5 +47,6 @@ $ kubectl apply -f kubernetes/hello-rate-limit-client.yaml
 
 Finally, run a watch command to see the rate limiting in action.
 
+```bash
 $ watch -n 1 -d http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 ```
