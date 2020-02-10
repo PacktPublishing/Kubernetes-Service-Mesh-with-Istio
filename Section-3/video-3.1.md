@@ -20,6 +20,8 @@ $ kubectl apply -f kubernetes/hello-istio.yaml
 $ kubectl apply -f kubernetes/hello-istio-gateway.yaml
 $ kubectl apply -f kubernetes/hello-istio-virtual-service.yaml
 $ kubectl apply -f kubernetes/hello-istio-destination.yaml
+
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 ```
 
 Next, edit the `kubernetes/hello-message-virtual-service.yaml` and add the traffic policy and circuit breaker definitions.
@@ -38,4 +40,6 @@ Now apply the virtual service and destination definitions for the `hello-message
 ```bash
 $ kubectl apply -f kubernetes/hello-message-virtual-service.yaml
 $ kubectl apply -f kubernetes/hello-message-destination.yaml
+
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 ```
