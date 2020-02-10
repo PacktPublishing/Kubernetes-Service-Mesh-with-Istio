@@ -21,6 +21,7 @@ $ kubectl apply -f kubernetes/hello-istio-gateway.yaml
 $ kubectl apply -f kubernetes/hello-istio-virtual-service.yaml
 $ kubectl apply -f kubernetes/hello-istio-destination.yaml
 
+$ kubectl get all
 $ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 ```
 
