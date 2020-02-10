@@ -10,3 +10,4 @@ spec:
     - destination:
         host: hello-message
         subset: v1
+    # configure a 2s timeout

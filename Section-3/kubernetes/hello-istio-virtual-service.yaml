@@ -13,3 +13,4 @@ spec:
         host: hello-istio
         port:
           number: 8080
+    # configure a 2s timeout

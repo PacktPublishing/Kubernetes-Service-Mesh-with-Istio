@@ -16,5 +16,18 @@ $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway
 ## Running
 
 ```
+$ kubectl apply -f kubernetes/hello-istio.yaml
+$ kubectl apply -f kubernetes/hello-istio-gateway.yaml
+$ kubectl apply -f kubernetes/hello-istio-virtual-service.yaml
+$ kubectl apply -f kubernetes/hello-istio-destination.yaml
 
+$ kubectl get all
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud sleep==3
+```
+
+Next, edit the virtual service definitions for `hello-istio` and the `hello-message` service definitions to configure the timeouts.
+
+```yaml
+    # configure a 2s timeout
+    timeout: 2s
 ```
