@@ -25,7 +25,7 @@ $ kubectl get all
 $ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud sleep==3
 ```
 
-Next, edit the virtual service definitions for `hello-istio` and the `hello-message` service definitions to configure the timeouts.
+Next, edit the virtual service definitions for `hello-istio` and the `hello-message` service to configure the timeouts.
 
 ```yaml
     # configure a 2s timeout
