@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: hello-message
+spec:
+  hosts:
+  - hello-message
+  http:
+  - route:
+    - destination:
+        host: hello-message
+        subset: v1
+    # configure 3 retries with 500ms timeout and 5xx condition

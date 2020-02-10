@@ -16,5 +16,29 @@ $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway
 ## Running
 
 ```
+$ kubectl apply -f kubernetes/hello-istio.yaml
+$ kubectl apply -f kubernetes/hello-istio-gateway.yaml
+$ kubectl apply -f kubernetes/hello-istio-virtual-service.yaml
+$ kubectl apply -f kubernetes/hello-istio-destination.yaml
+$ kubectl apply -f kubernetes/hello-message-virtual-service.yaml
+$ kubectl apply -f kubernetes/hello-message-destination.yaml
 
+$ kubectl get all
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
+```
+
+Next, edit the virtual service definitions for `hello-istio` and  `hello-message` to configure the retry behaviour.
+
+```yaml
+    retries:
+      attempts: 3
+      perTryTimeout: 500ms
+      retryOn: gateway-error,connect-failure,refused-stream
+```
+
+Now apply the modified destination rule definitions for the two services.
+
+```bash
+$ kubectl apply -f kubernetes/hello-istio-retries.yaml
+$ kubectl apply -f kubernetes/hello-message-retries.yaml
 ```
