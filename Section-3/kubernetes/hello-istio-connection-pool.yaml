@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: hello-istio
+spec:
+  host: hello-istio
+  # add traffic policy and connection pool
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+    # subset level traffic policy here
+  - name: v2
+    labels:
+      version: v2
+    # subset level traffic policy here

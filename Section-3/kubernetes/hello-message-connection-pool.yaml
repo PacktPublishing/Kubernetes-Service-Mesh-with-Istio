@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: hello-message
+spec:
+  host: hello-message
+  # add traffic policy and connection pool
+  subsets:
+  - name: v1  
+    # subset level traffic policy here
+    labels:
+      version: v1
