@@ -15,6 +15,27 @@ $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway
 
 ## Running
 
+```bash
+$ kubectl apply -f kubernetes/hello-istio.yaml
+$ kubectl apply -f kubernetes/hello-istio-gateway.yaml
+$ kubectl apply -f kubernetes/hello-istio-virtual-service.yaml
+$ kubectl apply -f kubernetes/hello-istio-destination.yaml
 ```
 
+Next, edit the `kubernetes/hello-message-virtual-service.yaml` and add the traffic policy and circuit breaker definitions.
+
+```yaml
+  trafficPolicy:
+    outlierDetection:
+      consecutiveErrors: 5    # 5 upstream errors (502, 503, 504)
+      interval: 30s           # sliding window of 30s
+      baseEjectionTime: 1m    # eject upstream for 1 minute
+      maxEjectionPercent: 50  # max 50% of upstream hosts ejected
+```
+
+Now apply the virtual service and destination definitions for the `hello-message` service.
+
+```bash
+$ kubectl apply -f kubernetes/hello-message-virtual-service.yaml
+$ kubectl apply -f kubernetes/hello-message-destination.yaml
 ```
