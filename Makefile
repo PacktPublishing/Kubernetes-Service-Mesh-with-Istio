@@ -52,7 +52,7 @@ istio-manual:
 	@kubectl apply -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-12.yaml
 	@kubectl apply -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-certmanager-10.yaml
 	@kubectl apply -f istio-$(VERSION)/install/kubernetes/helm/istio-init/files/crd-certmanager-11.yaml
-	@sleep 5
+	@sleep 10
 	@kubectl apply -f istio-$(VERSION)/install/kubernetes/istio-demo.yaml
 	@sleep 5
 	@kubectl get pods -n istio-system
@@ -64,7 +64,7 @@ istio-helm:
 
 	@helm install istio-$(VERSION)/install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
 	@kubectl get crds | grep 'istio.io' | wc -l
-	@sleep 5
+	@sleep 10
 
 	# install istio with demo template
 	@helm install istio-$(VERSION)/install/kubernetes/helm/istio --name istio --namespace istio-system --values istio-$(VERSION)/install/kubernetes/helm/istio/values-istio-demo.yaml

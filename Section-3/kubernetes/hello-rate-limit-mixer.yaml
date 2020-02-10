@@ -1,0 +1,54 @@
+apiVersion: "config.istio.io/v1alpha2"
+kind: handler
+metadata:
+  name: quotahandler
+  namespace: istio-system
+spec:
+  compiledAdapter: memquota
+  params:
+    quotas:
+    - name: requestcountquota.instance.istio-system
+      maxAmount: 100
+      validDuration: 1s
+      # The first matching override is applied.
+      # A requestcount instance is checked against override dimensions.
+      overrides:
+      # The following override applies to 'hello-message' when
+      # the source is 'hello-istio'.
+      - dimensions:
+          destination: hello-message
+          source: hello-istio
+        maxAmount: 1
+        validDuration: 3s
+      # The following override applies to 'hello-istio' regardless
+      # of the source.
+      - dimensions:
+          destination: hello-istio
+        maxAmount: 10
+        validDuration: 5s
+
+---
+apiVersion: "config.istio.io/v1alpha2"
+kind: instance
+metadata:
+  name: requestcountquota
+  namespace: istio-system
+spec:
+  compiledTemplate: quota
+  params:
+    dimensions:
+      source: source.labels["app"] | "unknown"
+      # sourceVersion: source.labels["version"] | "unknown"
+      destination: destination.labels["app"] | destination.service.name | "unknown"
+      # destinationVersion: destination.labels["version"] | "unknown"
+---
+apiVersion: "config.istio.io/v1alpha2"
+kind: rule
+metadata:
+  name: quota
+  namespace: istio-system
+spec:
+  actions:
+  - handler: quotahandler
+    instances:
+    - requestcountquota

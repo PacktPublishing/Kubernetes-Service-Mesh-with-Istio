@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: hello-istio
+spec:
+  host: hello-istio
+  trafficPolicy:
+    outlierDetection:
+      consecutiveErrors: 2    # 2 upstream errors (502, 503, 504)
+      interval: 10s           # sliding window of 10s
+      baseEjectionTime: 30s   # eject upstream for 30s
+      maxEjectionPercent: 100 # max 100% of upstream hosts ejected
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
