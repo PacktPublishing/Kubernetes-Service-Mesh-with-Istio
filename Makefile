@@ -64,6 +64,7 @@ istio-helm:
 
 	@helm install istio-$(VERSION)/install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
 	@kubectl get crds | grep 'istio.io' | wc -l
+	@sleep 5
 
 	# install istio with demo template
 	@helm install istio-$(VERSION)/install/kubernetes/helm/istio --name istio --namespace istio-system --values istio-$(VERSION)/install/kubernetes/helm/istio/values-istio-demo.yaml
