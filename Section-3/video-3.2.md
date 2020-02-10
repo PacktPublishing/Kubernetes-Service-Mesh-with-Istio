@@ -31,3 +31,13 @@ Next, edit the virtual service definitions for `hello-istio` and the `hello-mess
     # configure a 2s timeout
     timeout: 2s
 ```
+
+Issue the following commands to apply and see the timeouts in action.
+```bash
+$ kubectl apply -f kubernetes/hello-istio-virtual-service.yaml
+$ kubectl apply -f kubernetes/hello-message-virtual-service.yaml
+
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud sleep==3
+
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud sleep==1
+```
