@@ -7,5 +7,6 @@ spec:
   # add traffic policy and circuit breaker
   subsets:
   - name: v1  
+    # subset level traffic policy here
     labels:
       version: v1
