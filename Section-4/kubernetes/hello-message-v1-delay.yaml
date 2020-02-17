@@ -1,0 +1,39 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: hello-message
+spec:
+  hosts:
+  - hello-message
+  http:
+  # add HTTP delay for ChaosMonkey user agent
+  - fault:
+      delay:
+        fixedDelay: 5s
+        percentage:
+          value: 100
+    match:
+      - headers:
+          user-agent:
+            exact: ChaosMonkey
+    route:
+      - destination:
+          host: hello-message
+          subset: v1
+  - route:
+    - destination:
+        host: hello-message
+        subset: v1
+
+
+
+
+
+
+
+
+
+
+
+
+        
