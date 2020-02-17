@@ -6,20 +6,16 @@ spec:
   hosts:
   - hello-message
   http:
-  # add HTTP delay for ChaosMonkey user agent
+  # add HTTP delay of 5s
   - fault:
       delay:
-        fixedDelay: 5s
         percentage:
-          value: 100
-    match:
-      - headers:
-          user-agent:
-            exact: ChaosMonkey
+          value: 100.0
+        fixedDelay: 5s
     route:
-      - destination:
-          host: hello-message
-          subset: v1
+    - destination:
+        host: hello-message
+        subset: v1
   - route:
     - destination:
         host: hello-message

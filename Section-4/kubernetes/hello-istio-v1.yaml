@@ -8,6 +8,8 @@ spec:
   gateways:
   - hello-istio-gateway
   http:
+  # try adding HTTP delay of 3s to requests with User-Agent ChaosMonkey
+  # try adding HTTP abort fault to requests with User-Agent ChaosMonkey
   - route:
     - destination:
         host: hello-istio

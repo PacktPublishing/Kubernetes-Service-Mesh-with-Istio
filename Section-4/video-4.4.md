@@ -14,15 +14,38 @@ $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway
 
 $ kubectl apply -f kubernetes/hello-istio.yaml
 $ kubectl apply -f kubernetes/hello-istio-gateway.yaml
-$ kubectl apply -f kubernetes/hello-istio-virtual-service.yaml
+$ kubectl apply -f kubernetes/hello-istio-v1.yaml
 $ kubectl apply -f kubernetes/hello-istio-destination.yaml
+
 $ kubectl apply -f kubernetes/hello-message-virtual-service.yaml
 $ kubectl apply -f kubernetes/hello-message-destination.yaml
 ```
 
 ## Running
 
+First, make sure everything is running correctly without delays.
 ```
 $ kubectl get all
 $ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
+
+# check the container logs of the hello-message pod
+$ kubectl logs hello-message-v2-6dcc4fff9-hnbxs -c hello-message
+```
+
+Next, configure traffic mirroring for the hello-message v2 virtual service.
+
+```yaml
+  mirror:
+    host: hello-message
+    subset: v2
+  mirror_percent: 100
+```
+
+The apply the changes to the virtual service, invoke the service and finally check the container logs.
+
+```
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
+$ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
+
+$ kubectl logs hello-message-v2-6dcc4fff9-hnbxs -c hello-message
 ```
