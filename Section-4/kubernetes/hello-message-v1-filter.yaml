@@ -1,0 +1,36 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: hello-message-lua
+spec:
+  workloadSelector:
+    labels:
+      app: hello-message
+  configPatches:
+    # adds the lua filter to the listener/http connection manager
+    # see https://istio.io/docs/reference/config/networking/envoy-filter/
+    # see https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/lua_filter#
+  - applyTo: HTTP_FILTER
+    match:
+      context: SIDECAR_INBOUND
+      listener:
+        # portNumber: 8080
+        filterChain:
+          filter:
+            name: "envoy.http_connection_manager"
+            subFilter:
+              name: "envoy.router"
+    patch:
+      operation: INSERT_BEFORE
+      value:
+       name: envoy.lua
+       config:
+         inlineCode: |
+           function envoy_on_request(request_handle)
+             -- send back static response and do not continue
+             request_handle:respond({[":status"] = "200"}, "Envoy Filtered Message")
+           end
+
+           function envoy_on_response(request_handle)
+            -- add response specific logic here
+           end
