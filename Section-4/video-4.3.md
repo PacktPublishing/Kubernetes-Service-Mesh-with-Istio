@@ -35,6 +35,44 @@ $ kubectl logs hello-message-v1-6dcc4fff9-hnbxs -c hello-message
 
 Apply the prepared envoy filter manifest and check that everything is working as expected. It does take a while for the sidecar to pick up the new filter configuration.
 
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: hello-message-lua
+spec:
+  workloadSelector:
+    labels:
+      app: hello-message
+  configPatches:
+    # adds the lua filter to the listener/http connection manager
+    # see https://istio.io/docs/reference/config/networking/envoy-filter/
+    # see https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/lua_filter#
+  - applyTo: HTTP_FILTER
+    match:
+      context: SIDECAR_INBOUND
+      listener:
+        filterChain:
+          filter:
+            name: "envoy.http_connection_manager"
+            subFilter:
+              name: "envoy.router"
+    patch:
+      operation: INSERT_BEFORE
+      value:
+       name: envoy.lua
+       config:
+         inlineCode: |
+           function envoy_on_request(request_handle)
+             -- send back static response and do not continue
+             request_handle:respond({[":status"] = "200"}, "Envoy Filtered Message")
+           end
+
+           function envoy_on_response(request_handle)
+             -- add response specific logic here
+           end
+```
+
 ```
 $ kubectl apply -f kubernetes/hello-message-v1-filter.yaml
 
