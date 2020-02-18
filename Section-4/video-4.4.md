@@ -41,7 +41,7 @@ Next, configure traffic mirroring for the hello-message v2 virtual service.
   mirror_percent: 100
 ```
 
-The apply the changes to the virtual service, invoke the service and finally check the container logs.
+Apply the changes to the virtual service, invoke the service and finally check the container logs.
 
 ```
 $ kubectl apply -f kubernetes/hello-message-v2-mirroring.yaml

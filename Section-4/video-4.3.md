@@ -33,8 +33,7 @@ $ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 $ kubectl logs hello-message-v1-6dcc4fff9-hnbxs -c hello-message
 ```
 
-The apply the prepared envoy filter manifest and check that everything is working as expected. It does take a while for the sidecar to pick up
-the new filter configuration.
+Apply the prepared envoy filter manifest and check that everything is working as expected. It does take a while for the sidecar to pick up the new filter configuration.
 
 ```
 $ kubectl apply -f kubernetes/hello-message-v1-filter.yaml
