@@ -61,25 +61,27 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	m := hello{getMessage("hello"), "v2"}
+	s, code := getMessage("hello")
+	m := hello{s, "v2"}
 	b, err := json.Marshal(m)
 
 	if err != nil {
 		panic(err)
 	}
 
+	w.WriteHeader(code)
 	w.Header().Add("Content-Type", "application/json; charset=utf-8")
 	w.Write(b)
 }
 
 var client = http.Client{Timeout: 3 * time.Second}
 
-func getMessage(msg string) string {
+func getMessage(msg string) (string, int) {
 	resp, err := client.Get("http://hello-message:8080/api/message/" + msg)
 	if err != nil {
 		message := "Error getting message from backend."
 		fmt.Println(message)
-		return message
+		return message, http.StatusServiceUnavailable
 	}
 
 	defer resp.Body.Close()
@@ -88,8 +90,8 @@ func getMessage(msg string) string {
 	if err != nil {
 		message := "Error reading message from backend."
 		fmt.Println(message)
-		return message
+		return message, http.StatusBadGateway
 	}
 
-	return string(body)
+	return string(body), resp.StatusCode
 }
