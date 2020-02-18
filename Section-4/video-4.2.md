@@ -23,7 +23,7 @@ $ kubectl apply -f kubernetes/hello-message-destination.yaml
 
 ## Running
 
-First, make sure everything is running correctly without delays.
+First, make sure everything is running correctly without any faults.
 ```
 $ kubectl get all
 $ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
