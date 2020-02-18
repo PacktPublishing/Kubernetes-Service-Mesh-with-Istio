@@ -37,6 +37,7 @@ Next, configure a HTTP delay fault for any traffic to the hello-message v1 virtu
       percentage:
         value: 100.0
       fixedDelay: 5s
+  # optionally add header match here
   route:
   - destination:
       host: hello-message

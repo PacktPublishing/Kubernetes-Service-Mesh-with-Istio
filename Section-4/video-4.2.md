@@ -37,6 +37,7 @@ Next, configure a HTTP abort fault for any traffic to the hello-message v1 virtu
       httpStatus: 500
       percentage:
         value: 100.0
+  # optionally add header match here
   route:
   - destination:
       host: hello-message
