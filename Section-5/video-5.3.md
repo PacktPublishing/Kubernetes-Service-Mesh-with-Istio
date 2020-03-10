@@ -1,4 +1,4 @@
-# Permissive Mode
+# Enabling Strict Mode
 
 ## Prerequisites
 
