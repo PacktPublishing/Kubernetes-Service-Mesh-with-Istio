@@ -1,0 +1,27 @@
+apiVersion: "security.istio.io/v1beta1"
+kind: "RequestAuthentication"
+metadata:
+  name: hello-istio-jwt-authz
+  namespace: hello-istio
+spec:
+  selector:
+    matchLabels:
+      app: hello-istio
+  jwtRules:
+  - issuer: "packtpub"
+    jwksUri: "https://raw.githubusercontent.com/PacktPublishing/Kubernetes-Service-Mesh-with-Istio/master/Section-5/data/jwks.json"
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: hello-istio-require-jwt
+  namespace: hello-istio
+spec:
+  selector:
+    matchLabels:
+      app: hello-istio
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+       requestPrincipals: ["packtpub/demo"]
