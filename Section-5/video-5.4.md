@@ -43,5 +43,8 @@ $ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 
 $ sed "s/<<CLIENT_IP>>/$CLIENT_IP/" kubernetes/hello-istio-gateway-policy-allow.yaml | kubectl apply -f -
 $ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
+
+# do some cleanup
+$ kubectl delete AuthorizationPolicy -n istio-system --all
 ```
 

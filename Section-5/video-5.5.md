@@ -57,6 +57,9 @@ $ http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 
 $ kubectl exec -it hello-istio-insecure-6969cf44bf-.... /bin/sh
 $ wget hello-message.hello-istio.svc.cluster.local:8080/api/message/hello -S -O - | more
+
+# do some cleanup
+$ kubectl delete AuthorizationPolicy -n hello-istio --all
 ```
 
 
