@@ -7,7 +7,7 @@ This section is about securing the service mesh at various levels. You will lear
 - **Video 5.3**: [Enabling Strict Mode](video-5.3.md)
 - **Video 5.4**: [Authorization on Ingress Gateway](video-5.4.md)
 - **Video 5.5**: [Authorization for HTTP traffic](video-5.5.md)
-- **Video 5.6**: [Authentication and Authorization with JWT](video-5.6.md)
+- **Video 5.6**: [Authorization with JWT](video-5.6.md)
 
 ## Prerequisites
 

@@ -1,0 +1,16 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: ingress-policy
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+  action: DENY
+  rules:
+  - from:
+    - source:
+       # replace <<CLIENT_IP>> with your actual IP
+       # can be IP address or IP range (e.g. "1.2.3.4", "5.6.7.0/24")
+       ipBlocks: ["<<CLIENT_IP>>"]
