@@ -11,7 +11,7 @@ under https://istio.io/docs/setup/platform-setup/docker/
 ## Step 1: Setup and Verify
 
 First, you need to download and setup the latest Istio release.
-At the time of writing this is `1.3.4`.
+At the time of writing this is `1.3.4`, upgrade to latest version if desired.
 ```
 $ curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.3.4 sh -
 
