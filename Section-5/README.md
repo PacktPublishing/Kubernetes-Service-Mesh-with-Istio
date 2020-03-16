@@ -5,9 +5,9 @@ This section is about securing the service mesh at various levels. You will lear
 - **Video 5.1**: Security by Default - Zero Trust Networks
 - **Video 5.2**: [Mutual TLS between services](video-5.2.md)
 - **Video 5.3**: [Enabling Strict Mode](video-5.3.md)
-- **Video 5.4**: [Authentication Policies](video-5.3.md)
-- **Video 5.5**: [Origin Authentication with JWT](video-5.5.md)
-- **Video 5.6**: [Adding RBAC Authorization](video-5.6.md)
+- **Video 5.4**: [Authorization on Ingress Gateway](video-5.4.md)
+- **Video 5.5**: [Authorization for HTTP traffic](video-5.5.md)
+- **Video 5.6**: [Authentication and Authorization with JWT](video-5.6.md)
 
 ## Prerequisites
 

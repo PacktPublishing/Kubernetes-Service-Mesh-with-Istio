@@ -1,4 +1,4 @@
-# Origin Authentication with JWT
+# Authorization for HTTP traffic
 
 ## Prerequisites
 

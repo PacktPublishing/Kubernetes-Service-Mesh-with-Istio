@@ -5,3 +5,10 @@ metadata:
 spec:
   mtls:
     mode: STRICT
+
+#  selector: 
+#    matchLabels:
+#      version: v2
+#  portLevelMtls:
+#    8081:
+#      mode: DISABLE

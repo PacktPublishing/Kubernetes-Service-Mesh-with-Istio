@@ -1,4 +1,4 @@
-# Adding RBAC Authorization
+# Authentication and Authorization with JWT
 
 ## Prerequisites
 
