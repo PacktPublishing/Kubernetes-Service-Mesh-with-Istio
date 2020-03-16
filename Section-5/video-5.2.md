@@ -34,8 +34,8 @@ $ kubectl apply -f kubernetes/hello-istio-destination.yaml
 $ kubectl apply -f kubernetes/hello-message-virtual-service.yaml
 $ kubectl apply -f kubernetes/hello-message-destination.yaml
 
-$ kubectl apply -f kubernetes/hello-istio-secure.yaml -n hello-istio
-$ kubectl apply -f kubernetes/hello-istio-insecure.yaml -n default
+$ kubectl apply -f kubernetes/hello-istio-secure.yaml
+$ kubectl apply -f kubernetes/hello-istio-insecure.yaml
 
 $ kubectl get all -n hello-istio
 $ kubectl get all -n default
