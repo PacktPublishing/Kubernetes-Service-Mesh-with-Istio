@@ -6,7 +6,7 @@ Good diagnosability is a cornerstone of any cloud-native application and service
 - **Video 6.2**: [Metrics with Prometheus](video-6.2.md)
 - **Video 6.3**: [Ops Dashboards with Grafana](video-6.3.md)
 - **Video 6.4**: [Call Tracing with Jaeger](video-6.4.md)
-- **Video 6.5**: [Generating Service Graphs](video-6.5.md)
+- **Video 6.5**: [Access Logs with Envoy](video-6.5.md)
 - **Video 6.6**: [Mesh Visualization with Kiali](video-6.6.md)
 
 ## Prerequisites
