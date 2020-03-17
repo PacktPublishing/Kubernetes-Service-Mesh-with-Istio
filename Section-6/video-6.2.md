@@ -11,6 +11,15 @@ $ kubectl get svc istio-ingressgateway -n istio-system
 $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
 
+Also, make sure to deploy the demo files for this section.
+
+```bash
+$ kubectl create namespace hello-istio
+$ kubectl label namespace hello-istio istio-injection=enabled
+
+$ kubectl apply -f kubernetes/
+```
+
 ## Running
 
 Check that Prometheus is running correctly and use `istioctl` to open the dashboard. Alternatively, use port-forwarding.
@@ -22,6 +31,9 @@ $ kubectl port-forward -n istio-system service prometheus 9090
 $ istioctl dashboard prometheus
 
 $ open http://localhost:9090
+
+# generate some traffic
+$ watch -n 1 -d http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 ```
 
 In the Prometheus dashboard have a look at the different available metrics, execute queries and display some graphs. Here are some example queries:
