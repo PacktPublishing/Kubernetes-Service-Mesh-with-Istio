@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: hello-message
+  namespace: hello-istio
+spec:
+  hosts:
+  - hello-message
+  http:
+  - route:
+    - destination:
+        host: hello-message
+        subset: v1
+      weight: 50
+    - destination:
+        host: hello-message
+        subset: v2
+      weight: 50
+
+
+
+
+
+
+
+
+
+
+
+
