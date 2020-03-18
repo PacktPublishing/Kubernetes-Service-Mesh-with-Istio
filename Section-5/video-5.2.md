@@ -27,12 +27,7 @@ $ kubectl label namespace default istio-injection=disabled
 Next, we will apply the demo set of microservices. Per default, the mTLS between services is in PERMISSIVE mode, meaning that encrypted and unencrypted traffic is allowed in the service mesh.
 
 ```bash
-$ kubectl apply -f kubernetes/hello-istio.yaml
-$ kubectl apply -f kubernetes/hello-istio-gateway.yaml
-$ kubectl apply -f kubernetes/hello-istio-virtual-service.yaml
-$ kubectl apply -f kubernetes/hello-istio-destination.yaml
-$ kubectl apply -f kubernetes/hello-message-virtual-service.yaml
-$ kubectl apply -f kubernetes/hello-message-destination.yaml
+$ kubectl apply -f kubernetes/demo/
 
 $ kubectl apply -f kubernetes/hello-istio-secure.yaml
 $ kubectl apply -f kubernetes/hello-istio-insecure.yaml
