@@ -19,12 +19,7 @@ $ kubectl create namespace hello-istio
 $ kubectl label namespace hello-istio istio-injection=enabled
 $ kubectl label namespace default istio-injection=disabled
 
-$ kubectl apply -f kubernetes/hello-istio.yaml
-$ kubectl apply -f kubernetes/hello-istio-gateway.yaml
-$ kubectl apply -f kubernetes/hello-istio-virtual-service.yaml
-$ kubectl apply -f kubernetes/hello-istio-destination.yaml
-$ kubectl apply -f kubernetes/hello-message-virtual-service.yaml
-$ kubectl apply -f kubernetes/hello-message-destination.yaml
+$ kubectl apply -f kubernetes/demo/
 
 $ kubectl apply -f kubernetes/hello-istio-secure.yaml -n hello-istio
 $ kubectl apply -f kubernetes/hello-istio-insecure.yaml -n default
