@@ -25,7 +25,7 @@ $ kubectl apply -f kubernetes/
 Check that Jaeger is running correctly and use `istioctl` to open the dashboard. Alternatively, use port-forwarding.
 
 ```bash
-$ kubectl -n istio-system get srv jaeger-query
+$ kubectl -n istio-system get svc jaeger-query
 
 $ kubectl port-forward -n istio-system services/jaeger-query 16686
 $ open http://localhost:16686
