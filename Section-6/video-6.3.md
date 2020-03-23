@@ -27,7 +27,7 @@ Check that Prometheus is running correctly and use `istioctl` to open the dashbo
 ```bash
 $ kubectl -n istio-system get svc grafana
 
-$ kubectl port-forward -n istio-system service grafana 3000
+$ kubectl port-forward -n istio-system services/grafana 3000
 $ open http://localhost:3000
 
 $ istioctl dashboard grafana
