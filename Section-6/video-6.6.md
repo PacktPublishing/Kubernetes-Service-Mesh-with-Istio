@@ -30,14 +30,15 @@ Check that Kiali is running correctly and use `istioctl` to open the dashboard. 
 $ kubectl -n istio-system get service kiali
 
 $ kubectl port-forward -n istio-system service kiali 20001
-$ istioctl dashboard kiali
-
 $ open http://localhost:20001/kiali
+
+$ istioctl dashboard kiali
 
 # get the username and password, which is admin/admin
 $ kubectl get secret kiali -n istio-system -o json
 $ echo "YWRtaW4=" | base64 --decode -i -
 
 # generate some traffic
+$ hey -z 5s http://$INGRESS_HOST/api/hello Host:hello-istio.cloud
 $ watch -n 1 -d http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 ```

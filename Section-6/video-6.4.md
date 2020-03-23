@@ -28,11 +28,12 @@ Check that Prometheus is running correctly and use `istioctl` to open the dashbo
 $ kubectl -n istio-system get service jaeger-query
 
 $ kubectl port-forward -n istio-system service jaeger-query 16686
-$ istioctl dashboard jaeger
-
 $ open http://localhost:16686
 
+$ istioctl dashboard jaeger
+
 # generate some traffic
+$ hey -z 5s http://$INGRESS_HOST/api/hello Host:hello-istio.cloud
 $ watch -n 1 -d http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 ```
 

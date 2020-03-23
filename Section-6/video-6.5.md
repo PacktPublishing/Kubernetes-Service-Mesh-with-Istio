@@ -34,6 +34,7 @@ Next, we generate some traffic on the demo microservices and check that that the
 
 ```bash
 # generate some traffic
+$ hey -z 5s http://$INGRESS_HOST/api/hello Host:hello-istio.cloud
 $ watch -n 1 -d http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 
 # in a new window, use the kubectl tail plugin to watch the logs
