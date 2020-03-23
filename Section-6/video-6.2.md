@@ -25,9 +25,9 @@ $ kubectl apply -f kubernetes/
 Check that Prometheus is running correctly and use `istioctl` to open the dashboard. Alternatively, use port-forwarding.
 
 ```bash
-$ kubectl -n istio-system get service prometheus
+$ kubectl -n istio-system get services prometheus
 
-$ kubectl port-forward -n istio-system service prometheus 9090
+$ kubectl port-forward -n istio-system services/prometheus 9090
 $ open http://localhost:9090
 
 $ istioctl dashboard prometheus
