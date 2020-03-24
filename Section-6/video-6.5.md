@@ -38,5 +38,6 @@ $ hey -z 5s http://$INGRESS_HOST/api/hello Host:hello-istio.cloud
 $ watch -n 1 -d http get $INGRESS_HOST/api/hello Host:hello-istio.cloud
 
 # in a new window, use the kubectl tail plugin to watch the logs
+$ kubectl logs -n hello-istio -c istio-proxy hello-istio-v1-..... -f
 $ kubectl tail -n hello-istio -c istio-proxy
 ```
