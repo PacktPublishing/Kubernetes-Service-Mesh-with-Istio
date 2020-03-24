@@ -27,9 +27,9 @@ $ kubectl apply -f kubernetes/
 Check that Kiali is running correctly and use `istioctl` to open the dashboard. Alternatively, use port-forwarding.
 
 ```bash
-$ kubectl -n istio-system get service kiali
+$ kubectl -n istio-system get svc kiali
 
-$ kubectl port-forward -n istio-system service kiali 20001
+$ kubectl port-forward -n istio-system services/kiali 20001
 $ open http://localhost:20001/kiali
 
 $ istioctl dashboard kiali
