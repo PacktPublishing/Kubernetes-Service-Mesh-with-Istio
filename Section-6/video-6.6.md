@@ -2,8 +2,6 @@
 
 ## Prerequisites
 
-## Prerequisites
-
 This video assumes that you have a running Istio installation on your Kubernetes cluster. Make sure you have installed the `demo` profile for Istio.
 
 ```bash
