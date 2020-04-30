@@ -47,15 +47,15 @@ Others: Docker (for Mac and Windows) and Minikube Installed<br/>
 
 ## About the author
 
-Mario-Leander Reimer is a chief technologist for QAware GmbH. He is a senior Java developer and architect with several years of experience in building complex distributed system architectures. He is continuously looking for innovations and ways to combine and apply state-of-the-art technology and open source software components in real-world customer projects. He studied computer science at Rosenheim and Staffordshire University and nowadays he is teaching cloud computing as a part time lecturer. He is a regular speaker at national and international conferences on various topics in software engineering.
-Slidedecks: https://speakerdeck.com/lreimer/
-GitHub: https://github.com/lreimer/
-Twitter: https://twitter.com/LeanderReimer
-Linkedin: https://www.linkedin.com/in/mario-leander-reimer-b2b67aa0/
+Mario-Leander Reimer is a chief technologist for QAware GmbH. He is a senior Java developer and architect with several years of experience in building complex distributed system architectures. He is continuously looking for innovations and ways to combine and apply state-of-the-art technology and open source software components in real-world customer projects. He studied computer science at Rosenheim and Staffordshire University and nowadays he is teaching cloud computing as a part time lecturer. He is a regular speaker at national and international conferences on various topics in software engineering.<br/>
+Slidedecks: https://speakerdeck.com/lreimer/<br/>
+GitHub: https://github.com/lreimer/<br/>
+Twitter: https://twitter.com/LeanderReimer<br/>
+Linkedin: https://www.linkedin.com/in/mario-leander-reimer-b2b67aa0/<br/>
 
 
 ## Related Products
-* [Building RESTful Web Services with Java EE 8]](https://www.packtpub.com/in/application-development/building-restful-web-services-java-ee-8)
+* [Building RESTful Web Services with Java EE 8](https://www.packtpub.com/in/application-development/building-restful-web-services-java-ee-8)
 
 * [Getting started with Cloud Native Go [Video]](https://www.packtpub.com/in/application-development/getting-started-cloud-native-go)
 
