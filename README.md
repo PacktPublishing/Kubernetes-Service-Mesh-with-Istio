@@ -1,3 +1,8 @@
+## $5 Tech Unlocked 2021!
+[Buy and download this Video for only $5 on PacktPub.com](https://www.packtpub.com/product/kubernetes-service-mesh-with-istio-video/9781838649166)
+-----
+*The $5 campaign         runs from __December 15th 2020__ to __January 13th 2021.__*
+
 # Kubernetes Service Meshes with Istio
 
 This is the code repository for [Kubernetes Service Meshes with Istio [Video]](https://www.packtpub.com/in/cloud-networking/kubernetes-service-mesh-with-istio-video), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the video course from start to finish.
